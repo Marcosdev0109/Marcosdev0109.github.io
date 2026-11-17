@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>João Marcos Portfólio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* Ideia: um campo cobalto com o nome em tipo expandido (a "vitrine iluminada"),
+   depois uma página clara de leitura: um projeto-vitrine grande, os demais em linhas,
+   e a história de quem passou 15 anos fechando caixa antes de escrever código. */
+:root{
+  --field:#1d3bd1;      /* cobalto do topo */
+  --on-field:#f5f7ff;
+  --lamp:#ffd23f;       /* amarelo da lâmpada, usado pouco */
+  --paper:#ffffff;
+  --ink:#141a2e;
+  --soft:#556079;
+  --rule:#d9deea;
+  --tint:#eef1fb;
+  --link:#1d3bd1;
+  --display:"Archivo", "Arial Narrow", system-ui, sans-serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --field:#1a2c8f; --on-field:#f2f4ff; --paper:#0f1424; --ink:#eef1fa; --soft:#a6aec4;
+    --rule:#273150; --tint:#18203a; --link:#9fb2ff; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --field:#1a2c8f; --on-field:#f2f4ff; --paper:#0f1424; --ink:#eef1fa; --soft:#a6aec4;
+  --rule:#273150; --tint:#18203a; --link:#9fb2ff; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:19px;line-height:1.6}
+a{color:var(--link);text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--lamp);outline-offset:3px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 18px}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance}
+p{margin:0}
+
+/* ---------- Topo ---------- */
+.hero{background:var(--field);color:var(--on-field);position:relative;overflow:hidden}
+.hero::before{ /* a lâmpada */
+  content:"";position:absolute;width:420px;height:420px;right:-160px;top:-140px;border-radius:50%;
+  background:radial-gradient(circle, rgba(255,210,63,.55) 0%, rgba(255,210,63,.12) 45%, rgba(255,210,63,0) 70%);
+  pointer-events:none;
+}
+.hero .wrap{position:relative;padding-top:40px;padding-bottom:40px;display:grid;gap:22px}
+.hello{font-size:1.05rem;opacity:.9}
+.name{font-weight:900;font-stretch:125%;line-height:.92;letter-spacing:-.01em;font-size:clamp(2.7rem,12.5vw,6.4rem)}
+.name span{display:block;font-weight:400;font-stretch:80%;letter-spacing:0;font-size:.56em;margin-top:.18em;opacity:.92}
+.pitch{font-size:clamp(1.15rem,4.4vw,1.45rem);line-height:1.45;max-width:34ch}
+.now{display:inline-flex;align-items:flex-start;gap:12px;background:rgba(255,255,255,.12);border-radius:16px;padding:10px 16px;font-size:.98rem;justify-self:start;line-height:1.45}
+.now::before{content:"";flex:none;margin-top:.42em;width:10px;height:10px;border-radius:50%;background:var(--lamp);box-shadow:0 0 0 4px rgba(255,210,63,.25)}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-block;text-decoration:none;font-weight:700;padding:13px 20px;border-radius:12px;font-size:1rem;border:2px solid var(--on-field);color:var(--on-field)}
+.btn.solid{background:var(--lamp);border-color:var(--lamp);color:#141a2e}
+.btn:hover{background:rgba(255,255,255,.12)}
+.btn.solid:hover{background:#ffdf6e}
+
+/* ---------- Seções ---------- */
+section{padding:52px 0 0}
+.sec-title{font-weight:800;font-stretch:112%;font-size:clamp(1.8rem,7vw,2.6rem);line-height:1.05;margin-bottom:8px}
+.sec-sub{color:var(--soft);max-width:56ch;margin-bottom:26px}
+
+/* Projeto vitrine */
+.show{border-radius:22px;background:var(--tint);padding:22px 18px;display:grid;gap:22px}
+.show h3{font-weight:800;font-stretch:118%;font-size:clamp(2rem,8vw,3rem);line-height:1}
+.show .what{font-size:1.08rem;max-width:52ch}
+.feats{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.feats li{padding-left:22px;position:relative}
+.feats li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:10px;border-radius:50%;background:var(--field)}
+.stack{color:var(--soft);font-size:.95rem}
+.go{display:flex;flex-wrap:wrap;gap:10px}
+.go a{text-decoration:none;font-weight:700;padding:12px 18px;border-radius:12px;font-size:1rem}
+.go .primary{background:var(--field);color:#fff}
+.go .secondary{border:2px solid var(--rule);color:var(--ink)}
+.go .primary:hover{filter:brightness(1.12)}
+.go .secondary:hover{border-color:var(--ink)}
+
+/* Mini loja desenhada (ilustração) */
+.shop{background:var(--paper);border:1px solid var(--rule);border-radius:18px;overflow:hidden;box-shadow:0 18px 40px -24px rgba(20,26,46,.45)}
+.shop-bar{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid var(--rule)}
+.shop-bar strong{font-family:var(--display);font-stretch:118%;font-weight:800}
+.cart{position:relative;width:30px;height:24px;border:2px solid var(--ink);border-radius:4px 4px 8px 8px}
+.cart b{position:absolute;top:-10px;right:-12px;background:var(--lamp);color:#141a2e;font-size:.7rem;border-radius:999px;padding:1px 6px}
+.shop-search{margin:12px 14px;border:1px solid var(--rule);border-radius:10px;padding:8px 12px;color:var(--soft);font-size:.92rem}
+.shop-search em{color:var(--ink);font-style:normal}
+.shop-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 14px 14px}
+.prod{border:1px solid var(--rule);border-radius:12px;padding:10px;display:grid;gap:6px;font-size:.82rem}
+.lamp-art{height:68px;border-radius:8px;background:var(--tint);position:relative;overflow:hidden}
+.lamp-art::before{content:"";position:absolute;left:50%;top:10px;width:2px;height:16px;background:var(--soft);transform:translateX(-50%)}
+.lamp-art::after{content:"";position:absolute;left:50%;top:24px;width:34px;height:20px;border-radius:20px 20px 4px 4px;background:var(--field);transform:translateX(-50%);box-shadow:0 22px 26px 6px rgba(255,210,63,.55)}
+.prod:nth-child(2) .lamp-art::after{width:22px;height:26px;border-radius:50% 50% 40% 40%;background:var(--lamp);box-shadow:0 0 22px 6px rgba(255,210,63,.6)}
+.prod b{font-weight:700}
+.prod span{color:var(--soft)}
+.shop-note{font-size:.82rem;color:var(--soft);padding:0 14px 12px}
+
+.flow{margin:0;padding:0;list-style:none;display:grid;gap:8px;counter-reset:f}
+.flow li{counter-increment:f;display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:baseline;font-size:.98rem}
+.flow li::before{content:counter(f);font-family:var(--display);font-weight:800;color:var(--field);font-size:1.1rem}
+
+@media (min-width:820px){
+  .show{grid-template-columns:1.15fr .85fr;padding:34px;column-gap:40px}
+  .show-text{display:grid;gap:18px;align-content:start}
+  .show-side{display:grid;gap:22px;align-content:start}
+}
+@media (max-width:819px){ .show-text{display:grid;gap:18px} .show-side{display:grid;gap:22px} }
+
+/* Projeto de automação */
+.auto{margin-top:22px;border:2px solid var(--ink);border-radius:22px;padding:22px 18px;display:grid;gap:20px}
+.auto-num{display:grid;grid-template-columns:auto auto;justify-content:start;align-items:baseline;column-gap:14px;font-family:var(--display);font-weight:900;font-stretch:125%;line-height:1}
+.auto-num .from{font-size:clamp(2.2rem,10vw,3.4rem);color:var(--soft);text-decoration:line-through;text-decoration-thickness:4px;text-decoration-color:var(--lamp)}
+.auto-num .to{font-size:clamp(3.4rem,16vw,5.4rem);color:var(--field)}
+.auto-num small{grid-column:1/-1;font-family:var(--body);font-stretch:100%;font-weight:400;font-size:.95rem;color:var(--soft);margin-top:8px}
+.auto-text{display:grid;gap:14px}
+.auto h3{font-weight:800;font-stretch:118%;font-size:clamp(1.8rem,7vw,2.4rem);line-height:1.05}
+.auto .note{font-size:.88rem;color:var(--soft)}
+@media (min-width:820px){ .auto{grid-template-columns:240px 1fr;padding:34px;column-gap:40px;align-items:start} }
+
+/* Outros projetos em linhas */
+.rows{margin-top:34px;border-top:2px solid var(--ink)}
+.row{display:grid;gap:8px;padding:22px 0;border-bottom:1px solid var(--rule)}
+.row h3{font-weight:800;font-stretch:110%;font-size:1.45rem;line-height:1.15}
+.row p{color:var(--soft)}
+.row .stack{color:var(--ink);font-size:.92rem;opacity:.8}
+.row .links{display:flex;flex-wrap:wrap;gap:18px;font-weight:700;margin-top:4px}
+.tag-ia{display:inline-block;margin-left:8px;vertical-align:middle;font-family:var(--body);font-stretch:100%;font-size:.75rem;font-weight:700;background:var(--lamp);color:#141a2e;padding:2px 9px;border-radius:999px}
+@media (min-width:820px){
+  .row{grid-template-columns:260px 1fr auto;column-gap:28px;align-items:baseline}
+  .row .links{margin:0;justify-content:flex-end}
+}
+
+.small-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.small-list a{text-decoration:none;border:1px solid var(--rule);border-radius:999px;padding:8px 14px;font-size:.95rem;color:var(--ink)}
+.small-list a:hover{border-color:var(--field);color:var(--link)}
+
+/* História */
+.story{display:grid;gap:26px}
+.story-quote{font-family:var(--display);font-weight:700;font-stretch:96%;font-size:clamp(1.5rem,6vw,2.1rem);line-height:1.2;max-width:24ch}
+.story p{max-width:60ch}
+.facts{display:grid;gap:14px;margin:0}
+.facts div{border-left:4px solid var(--field);padding-left:14px}
+.facts dt{font-weight:700}
+.facts dd{margin:0;color:var(--soft)}
+@media (min-width:820px){ .story{grid-template-columns:1fr 1fr;column-gap:48px} }
+
+/* Contato */
+.contact{margin-top:64px;background:var(--field);color:var(--on-field)}
+.contact .wrap{padding-top:44px;padding-bottom:48px;display:grid;gap:18px}
+.contact h2{font-weight:900;font-stretch:120%;font-size:clamp(2rem,9vw,3.4rem);line-height:1}
+.contact p{max-width:46ch}
+.contact ul{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:10px}
+.contact li{display:flex;flex-wrap:wrap;gap:4px 12px}
+.contact li span{opacity:.8;min-width:80px}
+.contact a{color:var(--on-field);font-weight:700;overflow-wrap:anywhere}
+.contact strong{overflow-wrap:anywhere}
+.fine{font-size:.85rem;opacity:.75;margin-top:10px}
+
+@media (prefers-reduced-motion: no-preference){
+  .hero .name{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes rise{from{opacity:.0;transform:translateY(14px)}to{opacity:1;transform:none}}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="hello">Olá, eu sou</p>
+    <h1 class="name">João Marcos<span>Rodrigues Barbosa</span></h1>
+    <p class="pitch">Construo interfaces em React e automações com IA que resolvem problemas reais. A última transformou 20 horas de trabalho por mês em 4.</p>
+    <p class="now">Procurando estágio em desenvolvimento, em Florianópolis ou remoto</p>
+    <div class="cta">
+      <a class="btn solid" href="https://lumina-store-marcos.netlify.app">Abrir a Lumina Store</a>
+      <a class="btn" href="https://github.com/Marcosdev0109">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/joao-marcos01">LinkedIn</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="projetos" aria-labelledby="t-proj">
+    <h2 class="sec-title" id="t-proj">Projetos</h2>
+    <p class="sec-sub">Todos com código aberto no GitHub. Os que têm demo podem ser usados agora, no celular.</p>
+
+    <article class="show" aria-labelledby="t-lumina">
+      <div class="show-text">
+        <h3 id="t-lumina">Lumina Store</h3>
+        <p class="what">Uma loja virtual de iluminação completa: o cliente navega pelo catálogo, busca, abre o produto, monta o carrinho e paga. Projeto avaliativo do curso de React do SC Tech.</p>
+        <ul class="feats">
+          <li>Catálogo vindo de uma API, com telas para carregando, erro e lista vazia</li>
+          <li>Busca que ignora acentos: quem digita "lampada" encontra "Lâmpada"</li>
+          <li>Carrinho compartilhado com Context API, que respeita o estoque</li>
+          <li>Pagamento validado com React Hook Form e Zod, rota protegida e página 404</li>
+          <li>Testes com Vitest e Testing Library, incluindo os casos de erro</li>
+        </ul>
+        <p class="stack">React, Vite, React Router, Context API, Zod, Material UI, Vitest, Netlify</p>
+        <div class="go">
+          <a class="primary" href="https://lumina-store-marcos.netlify.app">Abrir a loja</a>
+          <a class="secondary" href="https://github.com/Marcosdev0109/lumina-checkout">Ver o código</a>
+        </div>
+      </div>
+      <div class="show-side">
+        <figure class="shop" aria-label="Ilustração da tela de produtos da Lumina Store" style="margin:0">
+          <div class="shop-bar"><strong>Lumina</strong><span class="cart" aria-hidden="true"><b>2</b></span></div>
+          <div class="shop-search">Buscar: <em>lampada</em></div>
+          <div class="shop-grid">
+            <div class="prod"><div class="lamp-art"></div><b>Pendente Cúpula Nórdica</b><span>Pendentes</span></div>
+            <div class="prod"><div class="lamp-art"></div><b>Lâmpada Filamento Vintage</b><span>Lâmpadas</span></div>
+          </div>
+          <figcaption class="shop-note">Ilustração. A loja de verdade está no botão "Abrir a loja".</figcaption>
+        </figure>
+        <ol class="flow" aria-label="Caminho de compra">
+          <li>Catálogo e busca</li>
+          <li>Detalhe do produto</li>
+          <li>Carrinho com quantidades e total</li>
+          <li>Pagamento com cartão validado</li>
+          <li>Tela de sucesso ou de falha</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="auto" aria-labelledby="t-agua">
+      <div class="auto-num" aria-label="De 20 para 4 horas por mês">
+        <span class="from">20h</span><span class="to">4h</span><small>por mês, antes e depois</small>
+      </div>
+      <div class="auto-text">
+        <h3 id="t-agua">Painel de Água<span class="tag-ia">IA + automação</span></h3>
+        <p>Eu cuido das faturas de água de 61 congregações. Antes, eram cerca de 20 horas por mês entrando no portal da CASAN unidade por unidade e comparando consumos. Agora o Claude lê os PDFs das faturas, o painel aponta o que venceu, quem consumiu acima da média e quanto custa cada m³, e uma tarefa agendada acompanha no Gmail as respostas dos protocolos. Hoje levo cerca de 4 horas.</p>
+        <p class="stack">JavaScript puro, gráficos em SVG, mobile-first, Claude para extrair dados de PDF, tarefa agendada no Gmail</p>
+        <div class="go">
+          <a class="primary" href="https://marcosdev0109.github.io/painel-agua/">Abrir a demonstração</a>
+          <a class="secondary" href="https://github.com/Marcosdev0109/painel-agua">Ver o código</a>
+        </div>
+        <p class="note">Na demonstração, os nomes das congregações são reais e os números são fictícios.</p>
+      </div>
+    </article>
+
+    <div class="rows">
+      <article class="row">
+        <h3>SkillMatch Web</h3>
+        <div>
+          <p>Compara o perfil de um candidato com vagas de front-end, calcula a compatibilidade e indica o que estudar primeiro. Tem tema claro e escuro e salva os dados no navegador.</p>
+          <p class="stack">JavaScript com módulos e POO, Fetch API, localStorage</p>
+        </div>
+        <div class="links"><a href="https://marcosdev0109.github.io/skillmatch-js/">Demo</a><a href="https://github.com/Marcosdev0109/skillmatch-js">Código</a></div>
+      </article>
+      <article class="row">
+        <h3>Titanic com Gemini<span class="tag-ia">IA</span></h3>
+        <div>
+          <p>Pipeline ETL que limpa e transforma o dataset do Titanic com Pandas e usa a API do Gemini para escrever um texto personalizado sobre cada passageiro.</p>
+          <p class="stack">Python, Pandas, Jupyter, Gemini API</p>
+        </div>
+        <div class="links"><a href="https://github.com/Marcosdev0109/Titanic.Pipline.ETL">Código</a></div>
+      </article>
+      <article class="row">
+        <h3>Repo Finder</h3>
+        <div>
+          <p>Busca na API pública do GitHub e mostra os repositórios mais estrelados de cada tema, tratando carregamento, falhas e limite de requisições.</p>
+          <p class="stack">JavaScript, GitHub REST API, HTML e CSS acessíveis</p>
+        </div>
+        <div class="links"><a href="https://marcosdev0109.github.io/js-buscador-de-repo/">Demo</a><a href="https://github.com/Marcosdev0109/js-buscador-de-repo">Código</a></div>
+      </article>
+      <article class="row">
+        <h3>Podcast feito com IAs<span class="tag-ia">IA</span></h3>
+        <div>
+          <p>Um episódio inteiro produzido com ferramentas generativas, do roteiro escrito com prompts até a narração e a edição.</p>
+          <p class="stack">Engenharia de prompts, ElevenLabs, Canva, CapCut</p>
+        </div>
+        <div class="links"><a href="https://github.com/Marcosdev0109/podcast-criado-com-ias">Código</a></div>
+      </article>
+    </div>
+
+    <div class="small-list" aria-label="Estudos de layout">
+      <a href="https://marcosdev0109.github.io/Optimus-Tech/">Optimus Tech, landing page</a>
+      <a href="https://marcosdev0109.github.io/lista-de-tarefas/">Lista de tarefas</a>
+      <a href="https://marcosdev0109.github.io/Art-no-Muro/">Arte no Muro, galeria</a>
+      <a href="https://github.com/Marcosdev0109/Curso-react">Exercícios de React</a>
+    </div>
+  </section>
+
+  <section id="sobre" aria-labelledby="t-sobre">
+    <h2 class="sec-title" id="t-sobre">Do caixa ao código</h2>
+    <div class="story">
+      <div style="display:grid;gap:18px">
+        <p class="story-quote">Passei 15 anos fechando caixa, montando relatórios e coordenando equipes. Hoje uso essa bagagem para construir software.</p>
+        <p>Antes de programar, trabalhei com gestão administrativa e financeira, vendas e sala de aula. Isso me ensinou a entender quem vai usar o sistema, a cumprir prazos e a explicar uma ideia com clareza. Na faculdade e no SC Tech, transformo isso em código. Uso o Claude como apoio para planejar e revisar, e entendo cada linha que entrego.</p>
+      </div>
+      <dl class="facts">
+        <div><dt>Ciência da Computação</dt><dd>Universidade Estácio de Sá, 6º período, conclusão prevista para 2028</dd></div>
+        <div><dt>Front-End com React</dt><dd>Programa SC Tech, Governo de Santa Catarina, em andamento</dd></div>
+        <div><dt>Introdução à Cibersegurança</dt><dd>Curso complementar</dd></div>
+        <div><dt>No dia a dia</dt><dd>HTML, CSS, JavaScript, React, Git, Python, Pandas, APIs de IA e engenharia de prompts</dd></div>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer class="contact" id="contato">
+  <div class="wrap">
+    <h2>Vamos conversar?</h2>
+    <p>Estou disponível para estágio de 30 horas semanais, presencial na Grande Florianópolis ou remoto.</p>
+    <ul>
+      <li><span>E-mail</span><strong>jmarcos010981@gmail.com</strong></li>
+      <li><span>Telefone</span><strong>(48) 98847-2797</strong></li>
+      <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/joao-marcos01">linkedin.com/in/joao-marcos01</a></li>
+      <li><span>GitHub</span><a href="https://github.com/Marcosdev0109">github.com/Marcosdev0109</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>
